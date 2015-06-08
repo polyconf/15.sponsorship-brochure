@@ -2,3 +2,4 @@ assets/css/.sass-cache/
 assets/.sass-cache/
 .DS_Store
 *.codekit
+.idea
