@@ -3,24 +3,67 @@
 @import "neat";
 @import "base/base";
 
-
-
 $dark: #464a4c;
 $blue: #20b9f1;
-$gray: #a1a5a8;
+$gray:  #a1a5a8;
+$gray2: shade(#a1a5a8,20%);
 $green: white;
 $white: white;
-
 
 body {
 	padding: 0;
 	margin: 0;
 	color: $dark;
+	font-weight: 300;
 }
 
+html {
+
+  @include media($desktop) {
+    font-size: 16px;
+  }
+
+  @include media($big) {
+    font-size: 18px;
+  }
+
+  @include media($tablet) {
+    font-size: 16px;
+  }
+
+  @include media($portrait) {
+    font-size: 16px;
+  }
+
+  @include media($phone) {
+  	font-size: 14px;
+  }
+
+}
+
+#wrapper {
+		overflow: hidden;
+}
 
 .container, .wrapper {
-	@include outer-container(1200px);
+
+	@include outer-container(1000px);
+	position: relative;
+	height: 100%;
+	min-height: 100%;
+
+	@include media($tablet) {
+		@include outer-container(900px);
+	}
+
+	@include media($portrait) {
+		@include outer-container(640px);
+	}
+
+	@include media($phone) {
+		@include outer-container(100%);
+	}
+
 }
 
 .button-container {
@@ -72,7 +115,6 @@ body {
 	}
 }
 
-
 .button.white {
 	color: $gray;
 	background: white;
@@ -88,7 +130,7 @@ body {
 }
 
 @media print {
-	.page-break { 
+	.page-break {
                 display: block;
                 page-break-before: always;
         }
@@ -118,10 +160,10 @@ nav#main {
 	bottom: 50px;
 	height: 50px;
 	width: 1200px;
-	margin-left: -600px;	
+	margin-left: -600px;
 	z-index: 5000;
 	background: #fff;
-	
+
 	#date-time {
 		display: block;
 		text-transform: uppercase;
@@ -131,10 +173,10 @@ nav#main {
 		padding: 0;
 		float: left;
 	}
-	
+
 	ul {
 		float: right;
-		
+
 		text-align: right;
 		li {
 			display: inline-block;
@@ -150,114 +192,339 @@ nav#main {
 			}
 		}
 	}
-	
+
 }
 
-#wrapper {}
+#first {
 
-header {
-	height: 600px;
 	position: relative;
 	background: $white;
 	z-index: 2000;
 
-	.last {
-		background: url(../previous.svg) no-repeat right center;
-		background-size: auto 40px;
-		height: 40px;
-		padding-right: 50px;
-		top: 40px;
-		right: 40px;
-		line-height: 40px;
-		color: #fff;
-		font-size: em(24);
-		position: absolute;
+	#illustration {
+
+	  @include media($desktop) {
+	    position: absolute;
+	    top: 50%;
+	    right: 50%;
+	    @include transform(translate(-100px,-50%));
+			margin-top: 50px;
+	  }
+
+		@include media($tablet) {
+	    position: absolute;
+	    top: 50%;
+	    right: 50%;
+	    @include transform(translate(-100px,-50%));
+			margin-top: 50px;
+	  }
+
+		@include media($portrait) {
+	    position: absolute;
+	    top: 40%;
+	    left: 50%;
+	    @include transform(translate(-50%,-50%));
+	  }
+
+	  @include media($phone) {
+			position: absolute;
+	    top: 33%;
+	    left: 50%;
+	    @include transform(translate(-50%,-50%));
+			margin-top: 50px;
+	  }
+
+
+	  #badge {
+
+	    position: relative;
+	    width: 210px;
+	    height: 280px;
+	    border: 4px solid $gray;
+	    border-radius: 20px;
+	    margin: 0 auto 50px;
+
+	    @include media($phone) {
+	    	width: 140px;
+	    	height: 190px;
+	    	border-width: 3px;
+	      border-radius: 15px;
+	    }
+
+
+	    .cutout {
+
+	      width: 30px;
+	      height: 30px;
+	      border: 3px solid $gray;
+	      position: absolute;
+	      top: 15px;
+	      left: 50%;
+	      @include transform(translateX(-50%));
+	      border-radius: 100%;
+
+	      @include media($phone) {
+	        top: 10px;
+	        width: 16px;
+	        height: 16px;
+	        border-width: 2px;
+	      }
+
+	    }
+
+	    .cord {
+	      border-radius: 3px;
+	      width: 5px;
+	      height: 400px;
+	      background: $gray;
+	      position: absolute;
+	      top: 30px;
+	      left: 50%;
+	      @include transform(translate(-50%,-100%));
+
+	      @include media($phone) {
+	      	width: 4px;
+	      	top: 20px;
+	      }
+
+
+	    }
+
+	    .logo {
+	      position: absolute;
+	      top: 50%;
+	      left: 50%;
+	      @include transform(translate(-50%,-50%));
+	      img {
+	        width: 70px;
+	        height: auto;
+	        @include media($phone) {
+	        	width: 50px;
+	        }
+
+	      }
+	    }
+
+	    .line {
+	      border-radius: 3px;
+	      background: $gray;
+	      position: absolute;
+	      left: 50%;
+	      @include transform(translateX(-50%));
+	    }
+
+	    .line-1 {
+	      border-radius: 3px;
+	      height: 5px;
+	      width: 120px;
+	      bottom: 50px;
+	      @include media($phone) {
+	        height: 4px;
+	        width: 80px;
+	        bottom: 40px;
+	      }
+	    }
+
+	    .line-2 {
+	      border-radius: 3px;
+	      height: 4px;
+	      width: 80px;
+	      bottom: 32px;
+	      @include media($phone) {
+	        height: 3px;
+	        width: 60px;
+	        bottom: 28px;
+	      }
+	    }
+
+	  }
+
+	  h1 {
+	    text-align: center;
+	    font-size: rem(38px);
+	    line-height: 1em;
+	    color: $gray;
+	    font-weight: 500;
+	    margin: 0 0 10px;
+	    text-transform: uppercase;
+	    white-space: nowrap;
+	    @include media($phone) {
+	    	font-size: rem(28px);
+	    }
+
+	    span {
+	      width: 6px;
+	      height: 6px;
+	      display: inline-block;
+	      vertical-align: top;
+	      background: shade($gray,10%);
+	      border-radius: 100%;
+	      margin: 0 8px;
+	      position: relative;
+	      top: 17px;
+	      @include media($phone) {
+	      	width: 4px;
+	      	height: 4px;
+	      	top: 12px;
+	      }
+	    }
+	  }
+
+	  h2 {
+	    text-align: center;
+	    font-size: rem(18px);
+	    color: $gray;
+	    font-weight: 500;
+	    margin: 0;
+	    text-transform: uppercase;
+	    margin-bottom: 40px;
+	    white-space: nowrap;
+	    @include media($phone) {
+	    	font-size: rem(14px);
+	    }
+	    span {
+	      width: 4px;
+	      height: 4px;
+	      display: inline-block;
+	      vertical-align: top;
+	      background: shade($gray,10%);
+	      border-radius: 100%;
+	      margin: 0 10px;
+	      position: relative;
+	      top: 8px;
+	      @include media($phone) {
+	        margin: 0 6px;
+	      	width: 3px;
+	      	height: 3px;
+	      	top: 6px;
+	      }
+	    }
+	  }
+
+	  h4 {
+	    text-align: center;
+	    font-size: rem(18px);
+	    color: shade($gray,10%);
+	    font-weight: 500;
+	    margin: 0;
+	    text-transform: uppercase;
+	  }
+
 	}
 
-	#logo {
-		margin: 0;
+	#become-a-sponsor {
+		color: $blue;
+		text-transform: uppercase;;
+		font-size: rem(64px);
+		line-height: 1em;
 		position: absolute;
-		left: 50%;
 		top: 45%;
-		width: 300px;
-		transform: translate(-50%, -50%);		
-		-webkit-transform: translate(-50%, -50%);		
-		display: block;
-		img {
-			width: 100%;
-			height: auto;
-			display: block;
-		}
-	} 
-	
-	#headline {
-		
-		margin: 0;
-		position: absolute;
 		left: 50%;
-		top: 45%;
-		width: 1200px;
-		-webkit-transform: translate(-50%, -50%);		
-		transform: translate(-50%, -50%);		
-		display: block;
-		
-		> div {
-			
-			font-size: em(30);
-			font-weight: 300;
-			text-transform: uppercase;
-		
-			&#poly-conf-2015 {
-				float: left;
-				color: $gray;
+		white-space: nowrap;
+		@include transform(translate(0,-50%));
+
+		&:before {
+			height: 5px;
+			width: 120%;
+			position: absolute;
+			bottom: -10%;
+			left: 0;
+			background: $gray;
+			border-radius: 3px;
+			content: "";
+			@include media($portrait) {
+				width: auto;
+				left: -20px;
+				right: -20px;
+				height: 4px;
 			}
-			
-			&#become-a-sponsor {
-				float: right;
-				color: $blue;
+			@include media($phone) {
+				width: auto;
+				left: -20px;
+				right: -20px;
+				height: 3px;
 			}
-		
-			
 		}
-		
+		@include media($portrait) {
+			@include transform(translate(-50%,0));
+			top: auto;
+			bottom: 15%;
+			text-align: center;
+			font-size: rem(48px)
+		}
+
+		@include media($phone) {
+			@include transform(translate(-50%,0%));
+			top: auto;
+			bottom: 15%;
+			left: 50%;
+			text-align: center;
+			font-size: rem(36px)
+		}
+
 	}
-	
-	
+
 }
 
-.fixed {
-
-	> section {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		background: $gray;
-		z-index: 1000;
-
-		&.skrollable-before, &.skrollable-after {
-			display: none;
+section {
+	.wrapper {
+		padding: 200px 0;
+		@include media($tablet) {
+			padding: 150px 0;
 		}
+		@include media($portrait) {
+			padding: 100px 0;
+		}
+		@include media($phone) {
+			padding: 50px 5%;
 
+		}
 	}
-	
-
 }
 
-#about, #packages {
+
+#about {
+
 	position: relative;
 	background: $white;
 	z-index: 2000;
-	padding: 120px 0;
+
+	.row {
+		@include row();
+
+		.left.column {
+			@include span-columns(5);
+			@include media($portrait) {
+				@include fill-parent();
+			}
+			@include media($phone) {
+				@include fill-parent();
+			}
+		}
+
+		.right.column {
+			@include span-columns(6);
+			@include shift(1);
+			@include media($portrait) {
+				@include fill-parent();
+				@include shift(0);
+			}
+			@include media($phone) {
+				@include fill-parent();
+				@include shift(0);
+			}
+		}
+
+	}
+
 }
 
 h1 {
-	margin: 0 0 80px;
 	line-height: 1.1em;
-	font-size: em(30);
+	font-size: rem(30px);
 	font-weight: 300;
+	margin: 0 0 2em;
 	color: $blue;
-	text-align: center;
 	text-transform: uppercase;
 }
 
@@ -271,93 +538,104 @@ h3 {
 }
 
 .intro {
-	text-align: center;
-	font-size: em(20);
+	font-size: rem(24px);
 	font-weight: 300;
 	color: $dark;
 	margin-bottom: 60px;
 }
 
 .paragraph {
-	margin: 0 auto 60px;
-	width: 60%;
+	margin-bottom: 3em;
 }
 
 #quote {
-	
-	.wrapper {
-		
-		color: #fff;
-		text-align: center;
-		width: 1200px;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		margin-left: -600px;
-		margin-top: -50px;
-		font-size: em(24);
-		font-weight: 300;
-		
+	background: $blue;
+	color: #fff;
+	text-align: center;
+	font-size: rem(24px);
+	font-weight: 300;
+	br {
+		@include media($portrait) {
+			display: none;
+		}
+		@include media($phone) {
+			display: none;
+		}
 	}
-	
 }
 
+
 #facts {
-	
+
+	background: $gray;
+
 	.wrapper {
-		
-		color: #fff;
-		text-align: center;
-		width: 1200px;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		margin-left: -600px;
-		margin-top: -120px;
-		font-weight: 300;
-		
+
 		.row {
 			@include row();
-			
+
 			.column {
-				@include span-columns(1 of 5);
-				
+
+				color: #fff;
+				text-align: center;
+				font-weight: 300;
+				float: left;
+				width: 20%;
+
+				@include media($portrait) {
+					width: 33%;
+					margin-bottom: 40px;
+				}
+
+				@include media($phone) {
+					width: 60%;
+					margin: 0 20%;
+					margin-bottom: 40px;
+				}
+
+
+				&#number-of-attendees {
+					@include media($portrait) {
+						margin-left: 16%;
+				  }
+				}
+
 				figure {
 					margin: 0 auto 40px;
-					width: 80%;
+					width: 66%;
 					position: relative;
 					img {
 						display: block;
 						width: 100%;
 					}
 				}
-				
+
 				span {
 					display: block;
-			
+
 					&.big {
 						font-size: em(32);
 						line-height: 1.1em;
 					}
-				
+
 					&.small {
 						font-size: em(16);
 					}
-					
+
 				}
-				
+
 			}
-			
+
 		}
-		
+
 	}
-	
+
 }
 
 #packages {
-	
+
 	.button-container {
-		padding: 60px 0; 
+		padding: 60px 0;
 		.button {
 				display: inline-block;
 				font-size: em(20);
@@ -367,18 +645,75 @@ h3 {
 				padding: 20px 30px;
 				background: $blue;
 				color: #fff;
-				border-radius: 4px;				
+				border-radius: 4px;
 		}
 	}
-	
-	
+
+	.desktop.table-container {
+
+		display: none;
+
+		@include media($desktop) {
+			display: block;
+		}
+
+		@include media($tablet) {
+			display: block;
+		}
+
+	}
+
+	.mobile.table-container {
+
+		display: none;
+
+		@include media($portrait) {
+			display: block;
+		}
+
+		@include media($phone) {
+			display: block;
+		}
+
+		table {
+			table-layout: auto;
+		}
+
+		.package-name {
+			border-right-width: 2px !important;
+			font-size: rem(20px);
+			.name {
+				display: block;
+			}
+			.price {
+				display: block;
+				color: $blue;
+			}
+		}
+
+		.feature {
+
+			td:nth-child(1) {
+				width: 70% !important;
+			}
+
+			td:nth-child(2) {
+				width: 30% !important;
+				border-right-width: 2px !important;
+			}
+
+		}
+
+	}
+
+
 }
 
 table {
-	
+
 	border-collapse: collapse;
 	border-spacing: 0;
-	
+
 	td {
 		border: 2px solid #e3e4e5;
 		border-right-width: 0px !important;
@@ -386,46 +721,49 @@ table {
 		line-height: 1.1em;
 		vertical-align: top;
 		padding: 15px 0;
-				
+
 		&.no-border {
 			border-width: 0px;
 		}
-		
+
 		&.border-right {
 			border-right-width: 2px !important;
 		}
-		
+
 		&.package {
 			width: 150px;
-			
+			@include media($tablet) {
+				width: 120px;
+			}
+
 			span {
 				display: block;
 				text-align: center;
 				text-transform: uppercase;
 				line-height: 1.3em;
-				
+
 				&.name {
 					color: $dark;
 				}
-				
+
 				&.price {
 					color: $blue;
 				}
-				
+
 			}
-			
+
 		}
-		
+
 		&.yes {
 			background: url(../img/tick.svg) no-repeat center 14px;
 			background-size: 24px auto;
 		}
-		
+
 		&.label {
 			text-align: left;
 			padding-left: 10px;
 		}
-		
+
 		.small {
 			font-size: em(12);
 			margin-top: 36px;
@@ -433,7 +771,7 @@ table {
 			display: block;
 			color: $gray;
 		}
-		
+
 		.learn-more {
 			white-space: nowrap;
 			background: $gray;
@@ -446,10 +784,13 @@ table {
 			border-radius: 2px;
 			vertical-align: middle;
 		}
-		
+
 	}
-	
+
+
 }
+
+
 
 nav#overlay {
 	position: fixed;
@@ -459,7 +800,7 @@ nav#overlay {
 	bottom: 0;
 	background: #5a6268;
 	z-index: 6000;
-	
+
 	#close-menu-link {
 		width: 50px;
 		height: 50px;
@@ -479,35 +820,35 @@ nav#overlay {
 		}
 
 	}
-	
+
 	.content {
 		margin: 0;
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		width: 400px;
-		-webkit-transform: translate(-50%, -50%);		
-		transform: translate(-50%, -50%);		
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
 		display: block;
-		
+
 		figure {
-			
+
 			display: block;
 			text-align: center;
 			margin-bottom: 30px;
-			
+
 			img {
 				width: 100px;
 				display: inline;
 			}
-			
+
 		}
-		
+
 		ul {
-			
+
 			li {
 				display: block;
-				
+
 				a {
 					display: block;
 					color: #fff;
@@ -520,50 +861,49 @@ nav#overlay {
 						text-decoration: underline;
 					}
 				}
-				
+
 				&:last-child {
 					margin-top: 30px;
 				}
-				
+
 			}
-			
-			
+
+
 		}
-		
+
 	}
-	
+
 }
 
 
 #contact {
-	
+
+	background: $gray;
+
 	.wrapper {
-		
+
 		color: #fff;
 		text-align: center;
-		width: 1200px;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		margin-left: -600px;
-		margin-top: -120px;
-		font-weight: 300;
-	
+
 		p {
 			font-size: em(20);
 			a {
 				font-size: em(24);
-				display: block; 
+				display: block;
 				color: #fff;
 				text-decoration: underline;
 			}
 		}
-	
+
 		ul {
 			margin-top: 100px;
+			@include media($phone) {
+				margin-top: 20px;
+				margin-bottom: 100px;
+			}
 			li {
 				display: inline-block;
-				margin: 10px;					
+				margin: 10px;
 				a {
 					display: block;
 					width: 80px;
@@ -573,7 +913,7 @@ nav#overlay {
 					border: 2px solid $gray;
 						@include transition(0.5s all);
 					&:hover {
-						border: 2px solid white;					
+						border: 2px solid white;
 						@include transition(0.5s all);
 					}
 				}
@@ -584,10 +924,10 @@ nav#overlay {
 				}
 			}
 		}
-		
+
 	}
-	
-	#copy, #true {
+
+	#copy {
 		position: absolute;
 		bottom: 50px;
 		color: $dark;
@@ -597,18 +937,18 @@ nav#overlay {
 		a {
 			color: $dark;
 			text-decoration: underline;
-		}	
+		}
 	}
-	
+
 	#copy {
 		left: 50px;
 	}
-	
+
 	#true {
 		right: 50px;
 	}
 
-	
+
 }
 
 @media all {
